@@ -6,20 +6,23 @@ Página estática en español con diseño responsive, Facebook, presentación, c
 
 - `index.html` está cargado en este repositorio.
 - Este cambio no activa un alojamiento web ni GitHub Pages.
-- Las cuatro imágenes y el PDF no pudieron transferirse: el entorno de archivos de la conversación está fuera de servicio. No están incluidos en este commit. Sus referencias ya están en el HTML.
+- La cédula `15656534-C1.pdf` ya está en el repositorio y enlazada.
+- Las cuatro imágenes y el logo oficial siguen pendientes de subir: el entorno de archivos de la conversación no permite transferir los adjuntos. El HTML ya utiliza sus nombres actuales.
 - La agenda y la recepción de identificaciones están deshabilitadas hasta conectar un servicio real. No se envía al paciente a WhatsApp ni se generan reservas ficticias.
 
 ## Archivos pendientes
 
 Colocar estos archivos originales en la raíz, junto a `index.html`, conservando exactamente los nombres:
 
-1. `89acfd59-8498-42b5-a9c0-580e78429549(1).png`
-2. `14292121-d54d-4e8b-a93f-b7008e0c7879(1).png`
-3. `6b92b506-ae11-4ab5-9de7-04bdddca3f1b(1).png`
-4. `d4d7eb18-939e-40e6-8bbe-0588fa39689f(1).png`
-5. `15656534-C1.pdf`
+1. `89acfd59-8498-42b5-a9c0-580e78429549(3).png`
+2. `14292121-d54d-4e8b-a93f-b7008e0c7879(3).png`
+3. `6b92b506-ae11-4ab5-9de7-04bdddca3f1b(3).png`
+4. `d4d7eb18-939e-40e6-8bbe-0588fa39689f(3).png`
+5. `aa890bbb-d883-479d-9b7a-06eefe553191(1).png`
 
-El logo se muestra mediante un encuadre CSS de la primera imagen, donde aparece el logotipo original. No se generó ni sustituyó por otro logotipo. El PDF debe revisarse antes de publicación; no fue posible comprobar sus contenidos en esta sesión.
+La cédula `15656534-C1.pdf` ya está cargada.
+
+El logo oficial se referencia en encabezado, presentación y pie de página. El encuadre CSS elimina visualmente los márgenes vacíos de la imagen cuadrada y conserva el símbolo y el nombre completos. Ya no se extrae el logo de una radiografía. El contenido del PDF no se ha verificado clínicamente.
 
 ## Agenda: integración pendiente
 
@@ -49,4 +52,4 @@ Antes de habilitar la recepción, completar el aviso de privacidad con domicilio
 
 ## Validación efectuada
 
-Se comprobó la sintaxis JavaScript antes de subir el HTML. No hubo pruebas visuales en navegador ni pruebas de reservas reales, por falta de entorno y de servicio de agenda. Las referencias locales a imágenes y PDF no funcionarán hasta añadir los cinco archivos indicados.
+Se comprobó la sintaxis JavaScript antes de subir el HTML. No hubo pruebas visuales en navegador ni pruebas de reservas reales, por falta de entorno y de servicio de agenda. Las imágenes y el logo no se visualizarán hasta añadir los cinco archivos indicados. Los enlaces a la cédula coinciden con el PDF existente.
