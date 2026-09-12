@@ -7,18 +7,18 @@ Página estática en español con diseño responsive, Facebook, presentación, c
 - `index.html` está cargado en este repositorio.
 - Este cambio no activa un alojamiento web ni GitHub Pages.
 - La cédula `15656534-C1.pdf` ya está en el repositorio y enlazada.
-- Las cuatro imágenes y el logo oficial siguen pendientes de subir: el entorno de archivos de la conversación no permite transferir los adjuntos. El HTML ya utiliza sus nombres actuales.
+- Las cuatro imágenes y el logo oficial ya están en el repositorio y sus rutas en el HTML coinciden con los nombres cargados.
 - La agenda y la recepción de identificaciones están deshabilitadas hasta conectar un servicio real. No se envía al paciente a WhatsApp ni se generan reservas ficticias.
 
-## Archivos pendientes
+## Archivos integrados
 
-Colocar estos archivos originales en la raíz, junto a `index.html`, conservando exactamente los nombres:
+Los siguientes archivos están en la raíz, junto a `index.html`:
 
-1. `89acfd59-8498-42b5-a9c0-580e78429549(3).png`
-2. `14292121-d54d-4e8b-a93f-b7008e0c7879(3).png`
-3. `6b92b506-ae11-4ab5-9de7-04bdddca3f1b(3).png`
-4. `d4d7eb18-939e-40e6-8bbe-0588fa39689f(3).png`
-5. `aa890bbb-d883-479d-9b7a-06eefe553191(1).png`
+1. `89acfd59-8498-42b5-a9c0-580e78429549.png`
+2. `14292121-d54d-4e8b-a93f-b7008e0c7879.png`
+3. `6b92b506-ae11-4ab5-9de7-04bdddca3f1b.png`
+4. `d4d7eb18-939e-40e6-8bbe-0588fa39689f.png`
+5. `aa890bbb-d883-479d-9b7a-06eefe553191.png`
 
 La cédula `15656534-C1.pdf` ya está cargada.
 
@@ -52,4 +52,4 @@ Antes de habilitar la recepción, completar el aviso de privacidad con domicilio
 
 ## Validación efectuada
 
-Se comprobó la sintaxis JavaScript antes de subir el HTML. No hubo pruebas visuales en navegador ni pruebas de reservas reales, por falta de entorno y de servicio de agenda. Las imágenes y el logo no se visualizarán hasta añadir los cinco archivos indicados. Los enlaces a la cédula coinciden con el PDF existente.
+Se comprobó la sintaxis JavaScript antes de subir el HTML. No hubo pruebas visuales en navegador ni pruebas de reservas reales, por falta de entorno y de servicio de agenda. Se comprobó que las referencias a las cuatro imágenes y al logo coinciden con los archivos cargados. Los enlaces a la cédula coinciden con el PDF existente.
