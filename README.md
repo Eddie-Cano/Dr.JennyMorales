@@ -8,7 +8,7 @@ Página estática en español con diseño responsive, Facebook, presentación, c
 - Este cambio no activa un alojamiento web ni GitHub Pages.
 - La cédula `15656534-C1.pdf` ya está en el repositorio y enlazada.
 - Las cuatro imágenes y el logo oficial ya están en el repositorio y sus rutas en el HTML coinciden con los nombres cargados.
-- La agenda y la recepción de identificaciones están deshabilitadas hasta conectar un servicio real. No se envía al paciente a WhatsApp ni se generan reservas ficticias.
+- La agenda y la recepción de identificaciones están deshabilitadas hasta conectar un servicio real. La demo es local; el contacto directo por WhatsApp es un enlace independiente.
 
 ## Archivos integrados
 
@@ -52,4 +52,30 @@ Antes de habilitar la recepción, completar el aviso de privacidad con domicilio
 
 ## Validación efectuada
 
-Se comprobó la sintaxis JavaScript antes de subir el HTML. No hubo pruebas visuales en navegador ni pruebas de reservas reales, por falta de entorno y de servicio de agenda. Se comprobó que las referencias a las cuatro imágenes y al logo coinciden con los archivos cargados. Los enlaces a la cédula coinciden con el PDF existente.
+Se comprobaron la sintaxis JavaScript, la presentación en escritorio y móvil y el recorrido local de demostración (aprobación, rechazo, reinicio y salida). No se probaron reservas reales porque el repositorio no incluye un servidor de agenda. Las imágenes y el PDF referenciados existen.
+
+## Presentación y demostración de septiembre de 2026
+
+- Diseño renovado en `assets/refinement.css`, presentación de la doctora y dos retratos restaurados con IA y ampliados, optimizados como WebP. Revisar con la doctora la fidelidad de las fotografías antes de su uso definitivo.
+- `assets/jenny-retrato.webp`: 2048 × 2048; `assets/jenny-consultorio.webp`: 2244 × 2804. La ampliación no implica recuperar detalles originales inexistentes. Se conservaron los archivos originales del repositorio.
+- Se mantiene el formulario de paciente, incluida identificación, consentimientos y contrato API. Con `API_BASE` vacío la carga real y la reserva siguen inactivas.
+- El botón **Explorar demo de agenda y anticipo** abre una simulación local con datos ficticios y documento de ejemplo. También se puede abrir `?demo=1#cita`.
+- Recorrido: consentimientos de demostración → fecha y horario ficticios → anticipo ilustrativo de $300 MXN → resultado aprobado o rechazado → vista previa de mensaje no enviado. No hay reservas, cobros, cargas de documentos ni mensajes reales.
+- En la demo la ID continúa pendiente de revisión: cargar una identificación no constituye verificación de identidad. El importe y la política de anticipos necesitan definición del consultorio.
+- El botón flotante de WhatsApp abre una consulta real de disponibilidad cuando el visitante lo pulsa; es independiente de la simulación y no adjunta formularios ni documentos.
+- `Demo_Jenny_Morales.html` es la copia autónoma para presentar sin conexión (imágenes, CSS y JavaScript incluidos). Los enlaces externos requieren internet. Regenerar con `python build-preview.py` después de cada cambio; publicar `index.html` como entrada normal.
+
+### Fotografías
+
+Restauración con la herramienta integrada de imágenes. Prompts: mejorar resolución, nitidez y exposición sin cambiar identidad, pose, ropa ni consultorio; conservar blanco y negro en la segunda fotografía. Conversión y ampliación de salida con Sharp a las dimensiones indicadas. Las imágenes restauradas son interpretaciones asistidas por IA y deben revisarse con la persona retratada.
+
+### Validación de esta revisión
+
+Pruebas completadas en Chromium: flujo completo de demo, resultado rechazado, reinicio, salida, navegación móvil, ausencia de envíos POST y almacenamiento local, sin errores JavaScript ni desbordamiento horizontal. La integración API real no puede darse por validada sin servidor.
+
+### Fuentes revisadas
+
+- Facebook oficial enlazado en la página.
+- Directorio externo: https://www.mexicodentistas.com/dentista/consultorio-dental-especializado-en-endodoncia-dra-jenny-morales-baizabal-xalapa . No se copiaron calificaciones, horarios ni servicios no corroborados.
+- Educación general de endodoncia: https://www.aae.org/patients/root-canal-treatment/what-is-a-root-canal/ . El texto clínico debe revisarse por la doctora.
+- Se leyó el PDF de cédula aportado; no se realizó una validación independiente ante el registro.
