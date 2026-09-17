@@ -80,14 +80,40 @@ function emptyLead(profile = {}) {
 
 function scriptedFallback(messages, profile = {}) {
   const lead = emptyLead(profile);
-  const last = messages.at(-1)?.content?.toLowerCase() || '';
-  const emergency = /(no puedo respirar|no puedo tragar|dificultad para respirar|dificultad para tragar|hinchaz[oó]n.*cuello|sangrado.*no para|desmayo|confusi[oó]n)/i.test(last);
-  const urgent = emergency || /(dolor.*(muy fuerte|intenso)|fiebre|hinchaz[oó]n|inflamaci[oó]n|empeorando r[aá]pido)/i.test(last);
-  const appointment = /(ya tengo cita|mi cita|cambiar cita|reagendar|cancelar cita)/i.test(last);
-  const existing = appointment || /(ya soy paciente|paciente de la doctora|ya me atendieron)/i.test(last);
-  const type = appointment ? 'appointment' : existing ? 'existing' : 'new';
+  const userMessages = messages.filter(m => m.role === 'user');
+  const allUser = userMessages.map(m => m.content).join(' ');
+  const lastRaw = userMessages.at(-1)?.content?.trim() || '';
+  const last = lastRaw.toLowerCase();
+  const previousAssistant = [...messages].reverse().find(m => m.role === 'assistant')?.content?.toLowerCase() || '';
+
+  if (!lead.phone) {
+    const phoneMatch = lastRaw.match(/(?:\+?52[\s-]?)?(?:\d[\s()\-]?){10,14}/);
+    if (phoneMatch) lead.phone = phoneMatch[0].trim().slice(0,30);
+  }
+  if (!lead.email) {
+    const emailMatch = lastRaw.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+    if (emailMatch) lead.email = emailMatch[0].slice(0,160);
+  }
+  if (!lead.name) {
+    const looksLikeName = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ'’-]+(?:\s+[A-Za-zÁÉÍÓÚÜÑáéíóúüñ'’-]+){1,5}$/.test(lastRaw);
+    const hasIntentWords = /(paciente|cita|dolor|urgencia|muela|diente|endodoncia|inflamaci[oó]n|whatsapp)/i.test(lastRaw);
+    if ((previousAssistant.includes('nombre') || looksLikeName) && looksLikeName && !hasIntentWords) lead.name = lastRaw.slice(0,120);
+  }
+  if (!lead.reason) {
+    const reasonPrompt = /(qué te gustaría valorar|molestia principal|qué necesitas|motivo)/i.test(previousAssistant);
+    const dentalContext = /(dolor|molestia|muela|diente|endodoncia|inflam|sensibilidad|fractura|tratamiento|seguimiento|reagendar|cancelar|cita)/i.test(lastRaw);
+    if ((reasonPrompt || dentalContext) && lastRaw.length >= 4) lead.reason = lastRaw.slice(0,500);
+  }
+
+  const emergency = /(no puedo respirar|no puedo tragar|dificultad para respirar|dificultad para tragar|hinchaz[oó]n.{0,30}cuello|sangrado.{0,30}no para|desmayo|confusi[oó]n)/i.test(allUser);
+  const urgent = emergency || /(dolor.{0,20}(muy fuerte|intenso)|fiebre|hinchaz[oó]n|inflamaci[oó]n|empeorando r[aá]pido|empeora r[aá]pido)/i.test(allUser);
+  const appointment = /(ya tengo cita|mi cita|cambiar cita|reagendar|cancelar cita)/i.test(allUser);
+  const existing = appointment || /(ya soy paciente|paciente de la doctora|ya me atendieron)/i.test(allUser);
+  const newPatient = /(paciente nuevo|primera vez|quiero una valoraci[oó]n|quisiera una valoraci[oó]n)/i.test(allUser);
+  const type = appointment ? 'appointment' : existing ? 'existing' : newPatient ? 'new' : 'new';
   const level = emergency || urgent ? 4 : appointment ? 3 : existing ? 2 : 1;
   const handoff = Boolean(lead.name && lead.phone && (type !== 'new' || lead.reason));
+
   let reply = 'Puedo ayudarte a filtrar tu solicitud antes de pasarla al consultorio. ¿Me compartes tu nombre completo?';
   if (emergency) reply = 'Por los síntomas que describes, busca atención médica u odontológica de urgencia de inmediato, especialmente si respirar o tragar se dificulta. Si puedes hacerlo sin retrasar esa atención, también puedo dejar listo el contacto con el consultorio.';
   else if (!lead.name) reply = 'Claro. Para comenzar, ¿me compartes tu nombre completo?';
@@ -95,6 +121,7 @@ function scriptedFallback(messages, profile = {}) {
   else if (type === 'new' && !lead.reason) reply = '¿Qué te gustaría valorar o qué molestia principal te trae hoy? No necesito un diagnóstico, sólo una breve descripción.';
   else if (handoff) reply = 'Perfecto. Ya tengo lo necesario para pasar tu solicitud al consultorio. Puedes continuar por WhatsApp con el resumen preparado.';
   else reply = 'Cuéntame brevemente qué necesitas y te ayudo a dirigirlo al consultorio.';
+
   return {
     reply,
     patientType: type,
