@@ -1,0 +1,47 @@
+name: Rebuild hero videos
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'video-payload/**'
+      - '.github/workflows/rebuild-hero-videos.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rebuild silent MP4 assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -d video-payload || exit 0
+          mkdir -p assets
+          cat video-payload/horizontal-*.txt | tr -d '\n\r ' | base64 --decode > assets/hero-horizontal.mp4
+          cat video-payload/vertical-*.txt | tr -d '\n\r ' | base64 --decode > assets/hero-vertical.mp4
+
+          echo "9b75bc6164509f184b98fb378ad897c66326ddc1eec6b8f22b80622c10884cd2  assets/hero-horizontal.mp4" | sha256sum -c -
+          echo "4e7df2517bba6c9118c3d286b88c4c33462bd69b8f0a4dfccab455b89ad9f517  assets/hero-vertical.mp4" | sha256sum -c -
+
+          test "$(stat -c%s assets/hero-horizontal.mp4)" -eq 113734
+          test "$(stat -c%s assets/hero-vertical.mp4)" -eq 179996
+
+      - name: Commit rebuilt videos
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/hero-horizontal.mp4 assets/hero-vertical.mp4
+          if git diff --cached --quiet; then
+            echo "Hero videos are already correct."
+            exit 0
+          fi
+          git commit -m "Rebuild complete hero video assets"
+          git push
