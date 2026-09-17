@@ -1,0 +1,44 @@
+{
+  "mode": "demo",
+  "business": {
+    "name": "Dra. Jenny Morales Baizabal",
+    "city": "Xalapa",
+    "confirmedSpecialty": "Endodoncia",
+    "fullCatalogVerified": false
+  },
+  "pricing": {
+    "approvedByDoctor": false,
+    "label": "PRECIOS FICTICIOS PARA DEMOSTRACIÓN; NO SON TARIFAS DEL CONSULTORIO",
+    "currency": "MXN",
+    "examples": [
+      {
+        "concept": "Valoración",
+        "amount": 500
+      },
+      {
+        "concept": "Endodoncia",
+        "from": 3500,
+        "to": 5500
+      },
+      {
+        "concept": "Anticipo",
+        "amount": 300
+      }
+    ]
+  },
+  "contactPolicy": {
+    "publicPersonalNumber": false,
+    "directWhatsappLink": false,
+    "clinicalQuestions": "human_review",
+    "identityVerification": "manual_review_after_private_form"
+  },
+  "missingBeforeLive": [
+    "approved_service_catalog",
+    "approved_prices",
+    "approved_privacy_notice",
+    "ai_provider_credentials",
+    "private_lead_store",
+    "authenticated_staff_access",
+    "business_whatsapp_integration"
+  ]
+}

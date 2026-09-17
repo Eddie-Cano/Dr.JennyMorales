@@ -3,8 +3,10 @@ from pathlib import Path
 import base64,mimetypes,re
 root=Path(__file__).resolve().parent
 html=(root/'index.html').read_text()
-html=html.replace('<link rel="stylesheet" href="./assets/refinement.css">','<style>'+(root/'assets/refinement.css').read_text()+'</style>')
-html=html.replace('<script src="./assets/demo.js"></script>','<script>'+(root/'assets/demo.js').read_text()+'</script>')
+for file in ['refinement.css','reception.css']:
+ html=html.replace('<link rel="stylesheet" href="./assets/'+file+'">','<style>'+(root/'assets'/file).read_text()+'</style>')
+for file in ['demo.js','lead-flow.js','reception.js']:
+ html=html.replace('<script src="./assets/'+file+'"></script>','<script>'+(root/'assets'/file).read_text()+'</script>')
 def embed(match):
  path=root/match.group(1)
  return 'src="data:'+mimetypes.guess_type(path)[0]+';base64,'+base64.b64encode(path.read_bytes()).decode()+'"'

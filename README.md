@@ -62,8 +62,8 @@ Se comprobaron la sintaxis JavaScript, la presentación en escritorio y móvil y
 - El botón **Explorar demo de agenda y anticipo** abre una simulación local con datos ficticios y documento de ejemplo. También se puede abrir `?demo=1#cita`.
 - Recorrido: consentimientos de demostración → fecha y horario ficticios → anticipo ilustrativo de $300 MXN → resultado aprobado o rechazado → vista previa de mensaje no enviado. No hay reservas, cobros, cargas de documentos ni mensajes reales.
 - En la demo la ID continúa pendiente de revisión: cargar una identificación no constituye verificación de identidad. El importe y la política de anticipos necesitan definición del consultorio.
-- El botón flotante de WhatsApp abre una consulta real de disponibilidad cuando el visitante lo pulsa; es independiente de la simulación y no adjunta formularios ni documentos.
-- `Demo_Jenny_Morales.html` es la copia autónoma para presentar sin conexión (imágenes, CSS y JavaScript incluidos). Los enlaces externos requieren internet. Regenerar con `python build-preview.py` después de cada cambio; publicar `index.html` como entrada normal.
+- Los accesos directos a WhatsApp y teléfono se sustituyeron por recepción virtual. No se muestra el número personal en index.html.
+- `Demo_Jenny_Morales.html` dirige a la demostración actualizada en index.html. Ejecutar `python build-preview.py` para generar una copia autónoma actualizada; los enlaces externos requieren internet.
 
 ### Fotografías
 
@@ -79,3 +79,12 @@ Pruebas completadas en Chromium: flujo completo de demo, resultado rechazado, re
 - Directorio externo: https://www.mexicodentistas.com/dentista/consultorio-dental-especializado-en-endodoncia-dra-jenny-morales-baizabal-xalapa . No se copiaron calificaciones, horarios ni servicios no corroborados.
 - Educación general de endodoncia: https://www.aae.org/patients/root-canal-treatment/what-is-a-root-canal/ . El texto clínico debe revisarse por la doctora.
 - Se leyó el PDF de cédula aportado; no se realizó una validación independiente ante el registro.
+
+
+## Recepción de prospectos
+
+La recepción es una demostración guiada, no una IA conectada. Ofrece formulario y conversación con datos compartidos, preguntas solo sobre campos faltantes y clasificación por intención. No persiste ni envía prospectos reales. Se conserva el formulario original con identificación para la etapa de cita. Los precios de la recepción son ficticios y se etiquetan como tales.
+
+Configuración del agente, catálogo pendiente de aprobar e integración real: `agent/README.md`, `agent/instructions.md` y `agent/knowledge.json`. La generación de citas y pagos sigue siendo demostrativa.
+
+La revisión de recepción se validó con pruebas del motor en JavaScript y comprobaciones estáticas; el entorno de navegador no estuvo disponible para repetir la revisión visual.
