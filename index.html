@@ -57,6 +57,30 @@ footer{padding:28px 0;border-top:1px solid var(--line)}footer .wrap{display:flex
 }
 @media(prefers-reduced-motion:reduce){.hero-video-only video{display:none}.hero-video-only{background:linear-gradient(135deg,#0d5f62,#073f42)}}
 
+
+/* Google Reviews funnel section */
+.reviews-section{padding:86px 0;background:#fff}
+.reviews-card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:30px;background:linear-gradient(135deg,#fbfdfc 0%,#f4f8f5 58%,#f8f1fa 100%);box-shadow:var(--shadow)}
+.reviews-card:before{content:"";position:absolute;width:360px;height:360px;border-radius:50%;right:-110px;top:-150px;background:radial-gradient(circle,rgba(135,84,154,.17),transparent 67%)}
+.reviews-inner{position:relative;display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:center;padding:52px}
+.google-proof{display:flex;align-items:center;gap:18px}
+.google-g{width:62px;height:62px;border-radius:18px;background:#fff;display:grid;place-items:center;border:1px solid #e8ece9;box-shadow:0 12px 30px rgba(14,66,65,.08)}
+.google-g svg{width:38px;height:38px}
+.rating-big{display:flex;align-items:baseline;gap:9px}
+.rating-big strong{font:600 56px/1 Georgia,serif;color:var(--ink);letter-spacing:-.04em}
+.rating-big span{font-size:13px;color:var(--muted);font-weight:700}
+.stars{display:flex;gap:3px;margin:7px 0 4px;color:#f4b400;font-size:22px;letter-spacing:.03em}
+.google-meta{font-size:12px;color:var(--muted)}
+.reviews-copy .eyebrow{color:var(--violet)}
+.reviews-copy h2{font-size:clamp(36px,4.8vw,58px);line-height:1.04;letter-spacing:-.045em;margin:14px 0 18px;font-weight:500}
+.reviews-copy h2 .serif{color:var(--violet)}
+.reviews-copy p{color:var(--muted);max-width:650px;margin-bottom:24px}
+.review-actions{display:flex;gap:10px;flex-wrap:wrap}
+.google-review-btn{background:#fff!important;color:#1f1f1f!important;border:1px solid #dfe4e1!important;box-shadow:none!important}
+.google-review-btn:hover{background:#f7f9f8!important}
+@media(max-width:820px){.reviews-inner{grid-template-columns:1fr;padding:34px}.google-proof{align-items:flex-start}.rating-big strong{font-size:48px}}
+@media(max-width:520px){.reviews-section{padding:60px 0}.reviews-inner{padding:26px}.google-proof{gap:14px}.google-g{width:54px;height:54px}.review-actions{display:grid}.review-actions .btn{width:100%}}
+
 </style>
 </head>
 <body>
@@ -179,6 +203,41 @@ footer{padding:28px 0;border-top:1px solid var(--line)}footer .wrap{display:flex
   <details><summary>¿Puedo reagendar o cancelar una cita con el asistente?</summary><p>Sí. Puede recibir tu solicitud, registrar el nuevo horario que prefieres o una cancelación y dejarla lista para validación. La disponibilidad y cualquier cambio definitivo deben confirmarse antes de considerarse realizados.</p></details>
   <details><summary>¿Qué pasa si tengo una urgencia?</summary><p>El asistente puede detectar señales que ameritan atención prioritaria. Si existe dificultad para respirar o tragar, hinchazón progresiva de cara/cuello, sangrado incontrolable u otros síntomas graves, busca atención de urgencia de inmediato.</p></details>
 </div></section>
+
+
+<section class="reviews-section" id="resenas">
+  <div class="wrap">
+    <div class="reviews-card">
+      <div class="reviews-inner">
+        <div class="google-proof" aria-label="Calificación de Google">
+          <div class="google-g" aria-hidden="true">
+            <svg viewBox="0 0 48 48">
+              <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12S17.4 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/>
+              <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 18.9 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4c-7.7 0-14.3 4.3-17.7 10.7z"/>
+              <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.2 0-9.7-3.3-11.3-7.9l-6.5 5C9.6 39.6 16.2 44 24 44z"/>
+              <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C36.9 39.3 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="rating-big"><strong>5.0</strong><span>en Google</span></div>
+            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <div class="google-meta">76 reseñas · Consultorio Dental Especializado en Endodoncia</div>
+          </div>
+        </div>
+
+        <div class="reviews-copy">
+          <div class="eyebrow">Experiencias reales</div>
+          <h2>La confianza también se construye <span class="serif">con tu experiencia.</span></h2>
+          <p>Si ya te atendimos, tu reseña puede ayudar a otras personas a sentirse más seguras al momento de buscar atención. Compartir tu experiencia toma sólo unos minutos.</p>
+          <div class="review-actions">
+            <a class="btn" href="https://search.google.com/local/writereview?placeid=ChIJDaMeQUQv24UR56Vm22rrfUw" target="_blank" rel="noopener">Dejar mi reseña en Google ↗</a>
+            <a class="btn google-review-btn" href="https://www.google.com/maps/search/?api=1&query=Consultorio+Dental+Especializado+en+Endodoncia+Dra.+Jenny+Morales+Baizabal&query_place_id=ChIJDaMeQUQv24UR56Vm22rrfUw" target="_blank" rel="noopener">Ver reseñas ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="cta"><div class="wrap cta-card"><div><div class="eyebrow" style="color:#e2cbe9">¿Necesitas orientación?</div><h2>Empieza por <span class="serif">recepción.</span></h2><p>Consulta, solicita una cita, cambia un horario o cancela. El asistente organiza todo y deja la solicitud lista para revisión sin enviarte directamente a WhatsApp.</p></div><button class="btn light open-agent" type="button">Abrir recepción IA ↗</button></div></section>
 </main>
