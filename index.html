@@ -28,6 +28,35 @@ footer{padding:28px 0;border-top:1px solid var(--line)}footer .wrap{display:flex
 @media(max-width:900px){.nav{display:none;position:absolute;left:20px;right:20px;top:74px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;box-shadow:var(--shadow)}.nav.open{display:grid}.menu{display:block}.hero .wrap,.doctor-grid,.ai-grid,.credential{grid-template-columns:1fr}.hero .wrap{padding:44px 0 54px}.tooth-stage{min-height:410px}.services{grid-template-columns:1fr}.gallery{grid-template-columns:1fr 1fr}.gallery figure:first-child{grid-column:1/-1}.facts{grid-template-columns:1fr}.cta-card{align-items:flex-start;flex-direction:column}.photo-frame img{height:520px}}
 @media(max-width:600px){.wrap{width:min(100% - 28px,1160px)}.topbar .wrap span:last-child{display:none}header .wrap{min-height:70px}.brand img{width:195px;height:56px}.hero h1{font-size:46px}.hero p{font-size:16px}.tooth-stage{min-height:350px}.tooth-card{width:305px;border-radius:28px}.tooth-orbit{width:300px;height:300px}.mini-badge{font-size:10px}.section{padding:64px 0}.photo-frame img{height:440px}.gallery{grid-template-columns:1fr}.gallery figure:first-child{grid-column:auto}.gallery img,.gallery figure:first-child img{height:270px}.agent-fab span.label{display:none}.agent-fab{width:54px;height:54px;padding:0;justify-content:center}.modal{padding:0;align-items:stretch}.chat{width:100%;height:100vh;border-radius:0}.cta{padding:58px 0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tooth-card,.tooth-orbit,.tooth-shadow,.tooth-card:before,.tooth-card:after{animation:none!important}.btn,.service{transition:none!important}}
+
+/* Hero cinematográfico: mismo patrón probado en Fuera de Turno */
+.hero-video-only{position:relative;overflow:hidden;background:#062f32;color:#fff;height:min(76vh,760px);min-height:520px;isolation:isolate}
+.hero-video-only video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
+.hero-video-only .video-mobile{display:none}
+.hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(4,34,37,.56) 0%,rgba(4,34,37,.08) 46%,rgba(4,34,37,.03) 100%);pointer-events:none}
+.hero-buttons{position:absolute;left:50%;bottom:42px;transform:translateX(-50%);z-index:2;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;width:min(92%,760px)}
+.hero-buttons .btn{min-width:220px}
+.hero-secondary{background:rgba(5,48,51,.58)!important;color:#fff!important;border:1px solid rgba(255,255,255,.42)!important;backdrop-filter:blur(10px);box-shadow:none!important}
+.tooth-feature{padding:92px 0;background:linear-gradient(180deg,#f7faf8,#fff)}
+.tooth-feature-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:center}
+.tooth-feature-copy .eyebrow{color:var(--violet)}
+.tooth-feature-copy h2{font-size:clamp(38px,5vw,60px);line-height:1.04;letter-spacing:-.045em;margin:16px 0 20px;font-weight:500}
+.tooth-feature-copy h2 .serif{color:var(--violet)}
+.tooth-feature-copy p{color:var(--muted);max-width:620px;margin-bottom:26px}
+.tooth-feature .tooth-stage{min-height:460px}
+@media(max-width:900px){.tooth-feature-grid{grid-template-columns:1fr;gap:36px}.tooth-feature .tooth-stage{min-height:400px}}
+@media(max-width:600px){
+  .hero-video-only{height:74svh;min-height:560px}
+  .hero-video-only .video-desktop{display:none}
+  .hero-video-only .video-mobile{display:block}
+  .hero-shade{background:linear-gradient(0deg,rgba(4,34,37,.72) 0%,rgba(4,34,37,.18) 50%,rgba(4,34,37,.03) 100%)}
+  .hero-buttons{bottom:24px;display:grid;grid-template-columns:1fr;width:calc(100% - 28px)}
+  .hero-buttons .btn{width:100%;min-width:0}
+  .tooth-feature{padding:64px 0}
+  .tooth-feature .tooth-stage{min-height:340px}
+}
+@media(prefers-reduced-motion:reduce){.hero-video-only video{display:none}.hero-video-only{background:linear-gradient(135deg,#0d5f62,#073f42)}}
+
 </style>
 </head>
 <body>
@@ -45,37 +74,47 @@ footer{padding:28px 0;border-top:1px solid var(--line)}footer .wrap{display:flex
 </header>
 
 <main>
-<section class="hero" id="inicio">
-  <div class="wrap">
-    <div>
-      <div class="eyebrow">Cuidar tu diente · conservar tu sonrisa</div>
-      <h1>Tu diente merece<br>una <span class="serif">nueva oportunidad.</span></h1>
-      <p>Endodoncia en Xalapa con la Dra. Jenny Morales Baizabal. Conoce las opciones para conservar tu diente y empieza con una recepción más simple: primero te orientamos, después dirigimos tu solicitud al consultorio.</p>
-      <div class="hero-actions">
-        <button class="btn light open-agent" type="button">Hablar con recepción IA <span>↗</span></button>
-        <a class="btn ghost" style="color:white;border-color:#ffffff45" href="#doctora">Conocer a la doctora</a>
-      </div>
-      <p class="trustline">El asistente no diagnostica ni confirma citas. Sirve para orientar y filtrar tu solicitud.</p>
-    </div>
-    <div class="tooth-stage" aria-label="Muela sonriente animada">
-      <div class="tooth-orbit"></div><div class="tooth-shadow"></div>
+<section class="hero hero-video-only" id="inicio">
+  <video class="video-desktop" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <source src="./assets/hero-horizontal.mp4" type="video/mp4">
+  </video>
+  <video class="video-mobile" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <source src="./assets/hero-vertical.mp4" type="video/mp4">
+  </video>
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="hero-buttons">
+    <button class="btn light open-agent" type="button">Hablar con recepción IA <span>↗</span></button>
+    <a class="btn hero-secondary" href="#doctora">Conocer a la doctora</a>
+  </div>
+</section>
+
+<section class="tooth-feature">
+  <div class="wrap tooth-feature-grid">
+    <div class="tooth-stage">
+      <div class="tooth-orbit"></div>
       <div class="tooth-card" id="toothCard">
-        <div class="mini-badge badge-a">RECEPCIÓN · 24/7</div><div class="mini-badge badge-b">XALAPA · VER.</div>
-        <svg class="tooth-svg" viewBox="0 0 360 390" role="img" aria-label="Ilustración 3D de una muela sonriente">
+        <div class="tooth-shadow"></div>
+        <svg class="tooth-svg" viewBox="0 0 300 330" role="img" aria-label="Muela sonriente">
           <defs>
-            <linearGradient id="toothG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#eef8f5"/><stop offset="1" stop-color="#cfe8df"/></linearGradient>
-            <radialGradient id="shine"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
-            <filter id="soft"><feGaussianBlur stdDeviation="7"/></filter>
+            <linearGradient id="toothG" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset=".55" stop-color="#f5fbf9"/>
+              <stop offset="1" stop-color="#dceee8"/>
+            </linearGradient>
           </defs>
-          <path d="M78 48C44 71 43 123 59 164c12 30 22 54 28 97 9 68 17 88 36 90 24 3 27-72 57-72 31 0 31 75 57 72 18-2 29-26 35-91 5-48 17-67 29-98 16-42 15-91-17-113-32-22-63 4-103 4S111 26 78 48Z" fill="url(#toothG)" stroke="#fff" stroke-width="5"/>
-          <ellipse cx="125" cy="126" rx="15" ry="21" fill="#294c50"/><ellipse cx="235" cy="126" rx="15" ry="21" fill="#294c50"/>
-          <circle cx="130" cy="120" r="5" fill="#fff"/><circle cx="240" cy="120" r="5" fill="#fff"/>
-          <path d="M135 180c23 28 67 28 90 0" fill="none" stroke="#87549a" stroke-width="10" stroke-linecap="round"/>
-          <path d="M146 185c20 15 48 15 68 0" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-          <ellipse cx="105" cy="91" rx="48" ry="55" fill="url(#shine)" opacity=".62"/>
-          <ellipse cx="273" cy="221" rx="28" ry="49" fill="#9bcfc0" opacity=".26" filter="url(#soft)"/>
+          <path d="M151 28c-36-20-89-8-111 28-25 41-5 89 13 121 16 28 17 91 41 112 16 13 31-4 40-32 7-22 10-50 16-50 8 0 10 28 17 50 9 28 24 45 40 32 24-21 25-84 41-112 18-32 38-80 13-121-22-36-75-48-110-28z" fill="url(#toothG)" stroke="#cce3dc" stroke-width="5"/>
+          <ellipse cx="113" cy="136" rx="8" ry="11" fill="#164d50"/>
+          <ellipse cx="188" cy="136" rx="8" ry="11" fill="#164d50"/>
+          <path d="M118 169c18 20 46 20 65 0" fill="none" stroke="#87549a" stroke-width="8" stroke-linecap="round"/>
+          <path d="M85 88c24-26 60-34 94-21" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".78"/>
         </svg>
       </div>
+    </div>
+    <div class="tooth-feature-copy">
+      <div class="eyebrow">Endodoncia moderna</div>
+      <h2>Tu sonrisa empieza <span class="serif">desde la raíz.</span></h2>
+      <p>Antes de pensar en perder un diente, vale la pena conocer tus opciones. La Dra. Jenny Morales combina una atención cercana con una valoración profesional enfocada en conservar tu sonrisa siempre que sea posible.</p>
+      <button class="btn open-agent" type="button">Hablar con recepción IA ↗</button>
     </div>
   </div>
 </section>
